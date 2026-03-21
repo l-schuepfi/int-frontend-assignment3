@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="BOTTOM_CENTER" prefHeight="400.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.HelloController">
+    <Label fx:id="welcomeText" />
+    <Button onAction="#onHelloButtonClick" text="Get all tutorials" />
+    <TableView fx:id="tutorialTable" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="80.0" text="Tutorial id" />
+            <TableColumn fx:id="titleColumn" prefWidth="100.0" text="Tutorial title" />
+            <TableColumn fx:id="descColumn" prefWidth="100.0" text="Tutorial description" />
+            <TableColumn fx:id="publColumn" prefWidth="120.0" text="Tutorial published" />
+        </columns>
+    </TableView>
+</VBox>
