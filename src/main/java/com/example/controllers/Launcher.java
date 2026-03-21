@@ -1,4 +1,4 @@
-package com.example.intfrontend;
+package com.example.controllers;
 
 import javafx.application.Application;
 
