@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<?import javafx.scene.layout.VBox?>
+<?import java.awt.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.PutTutorialController">
+    <children>
+        <VBox spacing="15" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+                <Label text="Update Tutorial"></Label>
+                <Label text="Title:"></Label>
+                <TextField fx:id ="tutorialTitle"></TextField>
+                <Label text="Description:"></Label>
+                <TextField fx:id ="tutorialDescription"></TextField>
+                <Label text="Published:"></Label>
+                <TextField fx:id ="tutorialPublished"></TextField>
+                <Button text="back" onAction="#back"></Button>
+                <Button text="save" onAction="#sendPutRequest"></Button>
+        </VBox>
+    </children>
+</AnchorPane>
