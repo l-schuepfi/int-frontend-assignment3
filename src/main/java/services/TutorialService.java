@@ -1,41 +1,22 @@
 package services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import models.Tutorial;
 
+import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
-public class TutorialService extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class TutorialService {
 
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Override
-    public void start(Stage primaryStage) {
-
-    }
 
     public List<Tutorial> getAllTutorials() throws Exception {
 
@@ -59,4 +40,73 @@ public class TutorialService extends Application {
         }
         return Arrays.asList(tutorialArray);
     }
+
+
+   public void create (Tutorial tutorial) throws Exception {
+       String jsonBody = objectMapper.writeValueAsString(tutorial);
+
+        HttpRequest request = HttpRequest.newBuilder()
+               .uri(URI.create("http://localhost:8082/api/tutorials"))
+               .header("Content-Type", "application/json")
+               .POST(HttpRequest.BodyPublishers.ofString(jsonBody)).build();
+
+       HttpResponse<String> response =
+               client.send(request, HttpResponse.BodyHandlers.ofString());
+   }
+
+    // DELETE a tutorial
+    public void delete(Tutorial tutorial) throws Exception{
+        HttpRequest deleteRequest = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8082/api/tutorials/" + tutorial.getId()))
+                .DELETE()
+                .build();
+
+        HttpResponse<String> response =
+                client.send(deleteRequest, HttpResponse.BodyHandlers.ofString());
+
+
+    }
+
+    //update a tutorial
+    public void update(Tutorial tutorial) throws Exception{
+        String jsonBody = objectMapper.writeValueAsString(tutorial);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8082/api/tutorials/" + tutorial.getId()))
+                .header("Accept", "application/json")
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(jsonBody))
+                .build();
+
+        HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public List<Tutorial> getById(long id) throws IOException, InterruptedException {
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8082/api/tutorials/" + id))
+                .header("Accept", "application/json")
+                .GET()
+                .build();
+
+        HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if(response.statusCode() != 200){
+            System.out.println("Tutorial not found! Status " + response.statusCode());
+            return List.of();
+        }
+
+        Tutorial tutorial =
+                objectMapper.readValue(response.body(), Tutorial.class);
+
+            System.out.println("Tutorial id: " + tutorial.getId());
+            System.out.println("Tutorial title: " + tutorial.getTitle());
+            System.out.println("Tutorial description: " + tutorial.getDescription());
+            System.out.println("Tutorial published: " + tutorial.isPublished());
+
+        return Arrays.asList(tutorial);
+    }
+
 }
