@@ -155,9 +155,16 @@ public class HelloController implements Initializable {
     public void OpenCreateView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/views/createTutorial.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 400);
-        HelloApplication.getCentralStage().setTitle("Create");
+        HelloApplication.getCentralStage().setTitle("Create Tutorial");
         HelloApplication.getCentralStage().setScene(scene);
         HelloApplication.getCentralStage().show();
     }
 
+    public void OpenStepView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/views/step.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 400);
+        HelloApplication.getCentralStage().setTitle("Step");
+        HelloApplication.getCentralStage().setScene(scene);
+        HelloApplication.getCentralStage().show();
+    }
 }
