@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+    <VBox alignment="BOTTOM_CENTER" prefHeight="400.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.StepViewController">
+        <Button onAction="#OpenHelloView" text="Change to tutorials" />
+        <Label fx:id="welcomeText"/>
+        <Button onAction="#GetAllSteps" text="Get all steps" />
+        <TableView fx:id="stepTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="40.0" text="S_id" />
+                <TableColumn fx:id="titleColumn" prefWidth="80.0" text="S_title" />
+                <TableColumn fx:id="textColumn" prefWidth="80.0" text="S_text" />
+                <TableColumn fx:id="numberColumn" prefWidth="60.0" text="S_number" />
+                <TableColumn fx:id="tutorialIdColumn" prefWidth="40.0" text="T_id" />
+                <TableColumn fx:id="tutorialTitleColumn" prefWidth="100.0" text="T_title" />
+            </columns>
+        </TableView>
+        <HBox alignment="BOTTOM_CENTER">
+            <TextField fx:id="tutorialId"></TextField>
+            <Button onAction="#getStepsByTutorialId" text="Get step by Tutorial Id" />
+        </HBox>
+        <Button onAction="#OpenCreateStepView" text="Create new step" />
+    </VBox>
+
