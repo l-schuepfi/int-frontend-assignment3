@@ -48,7 +48,7 @@ public class CreateTutorialController {
     public void back() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/views/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 400);
-        HelloApplication.getCentralStage().setTitle("Hello!");
+        HelloApplication.getCentralStage().setTitle("Tutorial");
         HelloApplication.getCentralStage().setScene(scene);
         HelloApplication.getCentralStage().show();
     }
