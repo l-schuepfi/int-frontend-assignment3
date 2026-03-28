@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.controllers.CreateStepController"
+            prefHeight="400.0" prefWidth="400.0">
+
+    <children>
+        <VBox spacing="10" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+
+            <Label text="Create Step"></Label>
+
+            <Label text="Tutorial id:"></Label>
+            <ComboBox fx:id ="tutorialId" onAction="#tutorialSelection"></ComboBox>
+
+            <Label text="Tutorial title:"></Label>
+            <TextField fx:id ="tutorialTitle" editable="false"></TextField>
+
+            <Label text="Step title:"></Label>
+            <TextField fx:id ="stepTitle"></TextField>
+
+            <Label text="Step text:"></Label>
+            <TextField fx:id ="stepText"></TextField>
+
+            <Label text="Step number:"></Label>
+            <TextField fx:id ="stepNumber"></TextField>
+
+            <HBox spacing="100" alignment="CENTER">
+                <Button text="back" onAction="#back"></Button>
+                <Button text="save" onAction="#sendPostRequest"></Button>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
